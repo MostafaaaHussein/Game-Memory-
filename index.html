@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="app">
+        <header class="app__header">
+            <div class="stat">
+                <span class="stat__label">Time</span>
+                <span id="timer" class="stat__value">05:00</span>
+            </div>
+            <div class="stat">
+                <span class="stat__label">Moves</span>
+                <span id="moves" class="stat__value">0</span>
+            </div>
+            <div class="stat stat--stars" aria-label="rating">
+                <span id="stars" class="stars" title="Live rating">★★★★★</span>
+            </div>
+            <div class="actions">
+                <button id="resetBtn" class="btn" type="button">Reset</button>
+                <button id="submitBtn" class="btn btn--primary" type="button">Submit</button>
+            </div>
+        </header>
+
+        <main class="board" id="board" aria-label="Memory board" aria-live="polite"></main>
+    </div>
+
+    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+        <div class="modal__dialog">
+            <h2 id="modalTitle">Your Score</h2>
+            <div class="score">
+                <div class="score__row"><span>Result</span><strong id="resultText">Completed</strong></div>
+                <div class="score__row"><span>Rating</span><strong id="resultStars">★★★★★</strong></div>
+                <div class="score__row"><span>Moves</span><strong id="resultMoves">0</strong></div>
+                <div class="score__row"><span>Matches</span><strong id="resultMatches">0/0</strong></div>
+                <div class="score__row"><span>Time Used</span><strong id="resultTime">00:00</strong></div>
+            </div>
+            <div class="modal__actions">
+                <button id="playAgainBtn" class="btn btn--primary" type="button">Play again</button>
+                <button id="closeModalBtn" class="btn" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

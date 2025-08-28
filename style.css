@@ -1,0 +1,220 @@
+:root {
+    --bg: #0f1320;
+    --panel: #151a2d;
+    --card: #1c2442;
+    --accent: #6c8cff;
+    --accent-2: #22d3ee;
+    --text: #e8ecff;
+    --muted: #9aa4c7;
+    --danger: #ff6b6b;
+    --success: #22c55e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: radial-gradient(1200px 800px at 20% 0%, #0b0e1a, var(--bg)) no-repeat fixed;
+    color: var(--text);
+}
+
+.app {
+    max-width: 980px;
+    padding: 24px;
+    margin: 0 auto;
+}
+
+.app__header {
+    display: grid;
+    grid-template-columns: repeat(3, max-content) 1fr;
+    gap: 16px 24px;
+    align-items: center;
+    background: var(--panel);
+    border: 1px solid #222a46;
+    padding: 16px 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+.stat {
+    display: grid;
+    gap: 4px;
+}
+
+.stat__label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.stat__value {
+    font-weight: 800;
+    font-size: 22px;
+}
+
+.stat--stars .stat__value {
+    font-size: 20px;
+}
+
+.stars {
+    letter-spacing: 2px;
+    color: gold;
+    text-shadow: 0 0 10px rgba(255, 215, 0, .4);
+}
+
+.actions {
+    justify-self: end;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    appearance: none;
+    border: 1px solid #2a355d;
+    background: linear-gradient(180deg, #1f2747, #1a2140);
+    color: var(--text);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn--primary {
+    border-color: #3b6fff;
+    background: linear-gradient(180deg, #3b6fff, #2958e7);
+}
+
+.board {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+}
+
+@media (max-width: 860px) {
+    .board {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.card {
+    position: relative;
+    aspect-ratio: 4/5;
+    perspective: 1000px;
+}
+
+.card__inner {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform .5s ease;
+    border-radius: 14px;
+}
+
+.card.is-flipped .card__inner {
+    transform: rotateY(180deg);
+}
+
+.card.is-matched {
+    pointer-events: none;
+}
+
+.card__face {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    border: 1px solid #2a355d;
+    backface-visibility: hidden;
+}
+
+.card__face--front {
+    background: linear-gradient(160deg, var(--card), #12172b);
+}
+
+.card__face--back {
+    transform: rotateY(180deg);
+    background: radial-gradient(200px 160px at 50% 30%, rgba(255, 255, 255, .12), transparent),
+        linear-gradient(160deg, #203061, #1a2550 70%);
+}
+
+.card__emoji {
+    font-size: clamp(28px, 6vw, 44px);
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .35));
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .55);
+    padding: 20px;
+}
+
+.modal[aria-hidden="false"] {
+    display: flex;
+}
+
+.modal__dialog {
+    width: min(520px, 96vw);
+    background: var(--panel);
+    border-radius: 16px;
+    border: 1px solid #293155;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .45);
+}
+
+.modal__dialog h2 {
+    margin: 0 0 8px;
+}
+
+.score {
+    display: grid;
+    gap: 8px;
+    margin: 10px 0 18px;
+}
+
+.score__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--muted);
+}
+
+.score__row strong {
+    color: var(--text);
+}
+
+.modal__actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
